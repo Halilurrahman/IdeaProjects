@@ -6,9 +6,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Main {
-
-    public static void main(String[] args) {
 //        int myAge= 30;
 //        int herAge=myAge;
 //        byte age= 21;
@@ -41,7 +38,7 @@ public class Main {
 //        int x = Integer.parseInt(d)+ 3;
 //          int result = (int)(Math.random()*100);
 //        String price =NumberFormat.getPercentInstance().format(0.45);
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
 //        System.out.println(scanner);
 
         /* mortgage calculator
@@ -95,7 +92,7 @@ public class Main {
 //
 //        }
 
-    int numb = 15;
+//        int numb = 15;
 
 //    boolean numberDivisableByFive = numb % 5 == 0;
 //        if (numb%5 == 0 && numb%3 != 0)
@@ -109,10 +106,133 @@ public class Main {
 //        else
 //            System.out.println(numb);
 
-        for (int i = 0; i < 5; i++) {
-            System.out.println("AllaahoeAkbar");
-            System.out.println("test for github");
+//        for (int i = 0; i < 5; i++) {
+//            System.out.println("AllaahoeAkbar");
+//            System.out.println("test for github");
+//        }
+//        Scanner scanner = new Scanner(System.in);
+//        String input = "";
+//
+//        while (!input.equals("quit")) {
+//            System.out.print("Input: ");
+//            input = scanner.next().toLowerCase();
+//            if(input.equals("pass"))
+//                continue;
+//            if(input.equals("quit"))
+//                break;
+//            System.out.println(input);
+
+//do {
+//    System.out.print("Input: ");
+//    input = scanner.next().toLowerCase();
+//    System.out.println(input);
+//} while (!input.equals("quit"));
+
+
+//        String[] nintendoConsoles = {"Wii","Switch","N64","Gamecube","Snes","Nes"};
+//
+////        for(int i =0; i < nintendoConsoles.length ; i++)
+////            System.out.println(nintendoConsoles[i]);
+//
+//        for (String nintendoConsole: nintendoConsoles) {
+//            System.out.println(nintendoConsole);
+//
+//        }
+
+public class Main implements Execute {
+
+    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//
+//        System.out.print("Principal(between $1K and $1M): ");
+//        principal = scanner.nextInt();
+//        while (principal < 1000 || principal > 1000000) {
+//
+//            System.out.println("number is invalid, enter between 1000 and 1000000");
+//            System.out.print("Principal(between $1K and $1M): ");
+//            principal = scanner.nextInt();
+//        }
+////        int principal = scanner.nextInt();
+//        System.out.println(principal);
+//        System.out.print("Annual Interest rate(between 0 and 30: ");
+//        double interest = scanner.nextDouble();
+//
+//        while (interest <= 0 || interest >= 30) {
+//            System.out.println("invalid interest rate, must be higher than 0 and lower than 30");
+//            System.out.print("Annual Interest rate(between 0 and 30: ");
+//            interest = scanner.nextDouble();
+//        }
+//        System.out.println(interest);
+//        System.out.print("Period (Years between 1 and 30): ");
+//        byte years = scanner.nextByte();
+//        while (years < 1 || years > 30) {
+//            System.out.println("invalid years, must be equal or higher than 1 and equal or lower than 30");
+//            System.out.print("Period (Years between 1 and 30): ");
+//            years = scanner.nextByte();
+//        }
+//        System.out.println(years);
+
+//        System.out.println("Principal: " + principal + " - Interest: " + interest + " - Years: " + years);
+        int principal = (int) checkInputParameters("Principal amount(between $1K and $1M): ", 1000, 1000000);
+        double interest = checkInputParameters("Annual Interest rate(between 0 and 30: ", 0, 30);
+        byte years = (byte) checkInputParameters("Period (Years between 1 and 30): ", 1, 30);
+
+        printMonthlyAmoutTPayAndPayments(principal, interest, years);
+    }
+
+    private static void printMonthlyAmoutTPayAndPayments(int principal, double interest, byte years) {
+        System.out.println("Principal: " + principal + " - Interest: " + interest + " - Years: " + years);
+        System.out.println("-----------------------------------------------------------");
+
+        String resultCalculatedMortgage = calculateMortgage(principal, interest, years);
+        System.out.println("Your monthly rate is: " + resultCalculatedMortgage);
+
+        System.out.println("-----------------------------------------------------------");
+        System.out.println("Amount left to pay:");
+        System.out.println(payments(principal, interest, years));
+    }
+
+
+    public static double checkInputParameters(String inputText, int lowerParameterBorder, int higherParameterBorder) {
+        Scanner scanner = new Scanner(System.in);
+        double inputValue;
+        System.out.print(inputText);
+        inputValue = scanner.nextDouble();
+        while (inputValue < lowerParameterBorder || inputValue > higherParameterBorder) {
+            System.out.println("number is invalid, enter a value between " + lowerParameterBorder + " and " + higherParameterBorder);
+            System.out.print(inputText);
+            inputValue = scanner.nextInt();
+        }
+        System.out.println("-----------------------------------------------------------");
+        return inputValue;
+    }
+
+
+    public static String calculateMortgage(int principal, double interest, byte years) {
+        double mortgageRaw = principal * (((interest / 1200) * Math.pow((1 + interest / 1200), (years * 12)))
+                /
+                (Math.pow((1 + interest / 1200), (years * 12)) - 1));
+
+        String mortgage = NumberFormat.getCurrencyInstance().format(mortgageRaw);
+        return mortgage;
+    }
+
+    public static String payments(int principal, double interest, byte years) {
+        double amountLeftMortgage=0;
+        String amountLeftToPay= "";
+        for (int i = 0; i <= (years * 12); i++) {
+             amountLeftMortgage = principal * ((Math.pow((1 + interest / 1200), (years * 12)) - Math.pow((1 + interest / 1200), (i)))
+                    /
+                    (Math.pow((1 + interest / 1200), (years * 12)) - 1));
+
+            System.out.println("Month: " + i + " = " + NumberFormat.getCurrencyInstance().format(amountLeftMortgage));
+
         }
 
+        return amountLeftToPay;
     }
 }
+
+
+
+
