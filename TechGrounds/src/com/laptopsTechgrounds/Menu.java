@@ -16,7 +16,8 @@ public class Menu {
                 + "5. Weergeef alle producten gesorteerd op prijs van laag naar hoog.\n"
                 + "6. Voeg een product toe.\n"
                 + "7. Verwijder een product.\n"
-                + "8. Beëindig de applicatie.");
+                + "8. Sla alle wijzigingen op\n"
+                + "9. Beëindig de applicatie.");
         System.out.print("Uw keuze: ");
         choice = scanner.nextByte();
 
@@ -26,33 +27,23 @@ public class Menu {
 //        }
 //        LaptopArray LptArr = new LaptopArray();
         switch (choice) {
-
-            case 1:
-                LaptopArray.showLaptops();
-                break;
-            case 2:
-                LaptopArray.sortLaptopsAToZ();
-                break;
-            case 3:
-                LaptopArray.sortLaptopsZToA();
-                break;
-            case 4:
-                LaptopArray.sortLaptopsByPriceHighToLow();
-                break;
-            case 5:
-                LaptopArray.sortLaptopsByPriceLowToHigh();
-                break;
-            case 6:
+            case 1 -> LaptopArray.showLaptops();
+            case 2 -> LaptopArray.sortLaptopsAToZ();
+            case 3 -> LaptopArray.sortLaptopsZToA();
+            case 4 -> LaptopArray.sortLaptopsByPriceHighToLow();
+            case 5 -> LaptopArray.sortLaptopsByPriceLowToHigh();
+            case 6 -> {
                 AddLaptop.addLaptopInput();
                 AddLaptop.addLaptop();
-                break;
-            case 7:
-                RemoveLaptop.removeLaptop();
-                break;
-            case 8:
-                System.out.println("Bedankt voor het gebruiken van TechGrounds Laptops. Tot ziens!");
-                break;
-            default: {
+            }
+            case 7 -> RemoveLaptop.removeLaptop();
+            case 8 -> {
+                WriteToFile2.writeFile();
+                System.out.println("Opgeslagen");
+                LaptopArray.backToMainMenu();
+            }
+            case 9 -> System.out.println("Bedankt voor het gebruiken van TechGrounds Laptops. Tot ziens!");
+            default -> {
                 System.out.println("\nOngeldige invoer, probeer het nog eens.\n");
 //                LaptopArray.backToMainMenu();
                 var menu = new Menu();

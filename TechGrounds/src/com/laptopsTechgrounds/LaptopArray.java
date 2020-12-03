@@ -1,38 +1,16 @@
 package com.laptopsTechgrounds;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.io.Serializable;
 
-public class LaptopArray {
+public class LaptopArray implements Serializable{
 
 
    private static List<Laptop> listOfLaptops = new ArrayList<Laptop>();
 
-
-
-//    public static void main(String[] args) {
-//        listOfLaptops.add(new Laptop("Dell", "XS-550", 500));
-//        listOfLaptops.add(new Laptop("Windows", "Surface", 800));
-//        listOfLaptops.add(new Laptop("Acer", "MK-50", 780));
-//        listOfLaptops.add(new Laptop("MSI", "GAMER", 1200));
-//        listOfLaptops.add(new Laptop("Lenovo", "X", 900));
-//        listOfLaptops.add(new Laptop("Dell", "XS-650", 600));
-//    }
-
-//    private static Scanner scanner;
-
-
-//        sortLaptopsAToZ();
-//        sortLaptopsZToA();
-//        sortLaptopsByPriceLowToHigh();
-//        sortLaptopsByPriceHighToLow();
-//        showLaptops();
-//
-
-    //    }
     public static void readLaptops() {
 
         listOfLaptops.add(new Laptop("Lenovo", "Legion 5" , 1200));
@@ -45,7 +23,6 @@ public class LaptopArray {
     }
 
     public static void showLaptops() {
-
 //        LaptopArray.readLaptops();
         for (Laptop str : listOfLaptops) {
             System.out.println(str);
@@ -99,7 +76,7 @@ public class LaptopArray {
     public static void backToMainMenu() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Press enter to return to main menu");
-        String backToMenu = scanner.nextLine();
+        scanner.nextLine();
         var menu = new Menu();
         menu.menu();
     }
@@ -109,5 +86,8 @@ public class LaptopArray {
     public static void setListOfLaptops(List<Laptop> listOfLaptops) {
         LaptopArray.listOfLaptops = listOfLaptops;
     }
+
+
+
 }
 

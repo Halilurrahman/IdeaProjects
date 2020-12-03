@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="MoshTT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/MoshTT/out/artifacts/MoshTT_jar/MoshTT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

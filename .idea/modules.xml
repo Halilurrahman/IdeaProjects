@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Employee/Employee.iml" filepath="$PROJECT_DIR$/Employee/Employee.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HelloWorld/HelloWorld.iml" filepath="$PROJECT_DIR$/HelloWorld/HelloWorld.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/IdeaProjects.iml" filepath="$PROJECT_DIR$/.idea/IdeaProjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MoshObjects/MoshObjects.iml" filepath="$PROJECT_DIR$/MoshObjects/MoshObjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MoshTT/MoshTT.iml" filepath="$PROJECT_DIR$/MoshTT/MoshTT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MoshTutorial/MoshTutorial.iml" filepath="$PROJECT_DIR$/MoshTutorial/MoshTutorial.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TechGrounds/TechGrounds.iml" filepath="$PROJECT_DIR$/TechGrounds/TechGrounds.iml" />
+    </modules>
+  </component>
+</project>

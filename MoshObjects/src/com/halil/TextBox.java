@@ -1,16 +1,29 @@
 package com.halil;
 
-public class TextBox {
-    public String text="";
+public class TextBox extends UIControl {
+    private String text = "";
 
-    public void setText(String text){
+    public TextBox() {
+
+    }
+
+    @Override
+    public void render() {
+        System.out.println("Render TextBox");
+    }
+
+    @Override
+    public String toString() {
+        return text;
+    }
+
+    public void setText(String text) {
         this.text = text;
     }
 
-    public void clear(){
-        this.text= "";
+    public void clear() {
+        this.text = "";
     }
-
 
 
 }
